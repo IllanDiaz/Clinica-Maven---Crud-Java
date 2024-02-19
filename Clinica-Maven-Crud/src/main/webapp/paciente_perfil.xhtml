@@ -1,0 +1,53 @@
+<ui:composition template="/WEB-INF/template/layout_paciente.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:param name="titulo" value="Perfil de Paciente"/>
+    <ui:define name="content">
+        <section class="container">
+            <h1 class="section-title">Mis datos</h1>
+            <f:metadata>
+                <f:viewParam name="id_paciente" value="#{pacienteBean.service.paciente.id_paciente}" />
+                <f:event type="preRenderView" listener="#{pacienteBean.service.pacienteGet(pacienteBean.service.paciente.id_paciente)}"/>
+            </f:metadata>
+            <div class="container-form bg-white p-5 rounded-5 text-secondary shadow">
+                <h:form>
+                    <div class="col-12 col-md-6">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <p:inputText id="nombre" class="form-control" value="#{pacienteBean.service.pacienteGet(pacienteBean.service.paciente.id_paciente).nombre}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="appaterno" class="form-label">Apellido Paterno</label>
+                        <p:inputText id="appaterno" class="form-control" value="#{pacienteBean.service.pacienteGet(pacienteBean.service.paciente.id_paciente).apellidopaterno}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="apmaterno" class="form-label">Apellido Materno</label>
+                        <p:inputText id="apmaterno" class="form-control" value="#{pacienteBean.service.pacienteGet(pacienteBean.service.paciente.id_paciente).apellidomaterno}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="sexo" class="form-label">Sexo</label>
+                        <p:inputText id="sexo" class="form-control" value="#{pacienteBean.service.pacienteGet(pacienteBean.service.paciente.id_paciente).sexo}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="edad" class="form-label">Edad</label>
+                        <p:inputText id="edad" class="form-control" value="#{pacienteBean.service.pacienteGet(pacienteBean.service.paciente.id_paciente).edad}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="dni" class="form-label">DNI</label>
+                        <p:inputText id="dni" class="form-control" value="#{pacienteBean.service.pacienteGet(pacienteBean.service.paciente.id_paciente).dni}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="contrasena" class="form-label">Contraseña</label>
+                        <p:inputText id="contrasena" class="form-control" value="#{pacienteBean.service.pacienteGet(pacienteBean.service.paciente.id_paciente).password}" disabled="true"></p:inputText>
+                    </div> 
+                    <div class="col-12">
+                    <p:commandButton value="Editar" actionListener="#{pacienteBean.service.editarPaciente(pacienteBean.service.paciente.id_paciente)}"/>
+                </div>
+                </h:form>
+            </div>
+        </section>
+    </ui:define>
+    
+</ui:composition>

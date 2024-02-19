@@ -1,0 +1,38 @@
+.c-taman{
+    height: 560px;
+}
+
+.c-img{
+    height: 100%;
+    object-fit: cover;
+    background-color: rgba(0, 0, 0, 0.5); /* Ajusta el color y la opacidad según tus necesidades */
+    z-index: 1;
+}
+
+.area {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mapa-contenedor {
+  flex: 1;
+  width: 60%;
+  order: 1; /* Cambia el orden del mapa en pantallas pequeñas */
+}
+
+.texto1 {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+#doct{
+    margin-left: 6vh;
+    height: auto;
+    width: 300px; 
+}
+ 
+@media (max-width: 500px) {
+  .mapa {
+    max-width: 100%; /* Cambia el ancho máximo a 100% cuando el ancho de la ventana es menor o igual a 300px */
+  }
+}

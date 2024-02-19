@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/template/layout_medico.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:include src="WEB-INF/boots/coots.xhtml" />
+    <ui:param name="title" value="Productos"/>
+    <ui:define name="content">
+        <section class="container">
+            <h1 class="section-title">Medico</h1>
+
+            <div class="container-table mt-3">
+                <h1>Administrar medicos</h1>
+                <a class="btn btn-primary" href="medico_ins.xhtml">Agregar medico</a>
+                <h:form>
+                    <table class="table table-dark table-striped" id="tablaProductos">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre medico</th>
+                                <th>especialidad</th>
+                                <th>codigo</th>
+                                <th></th>
+<th>Opciones</th>
+                                
+
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <ui:repeat value="#{medicoBean.service.medicoSel()}" var="i">
+                                <tr>
+                                    <td>#{i.id_medico}</td>
+                                    <td>#{i.nombremedico}</td>
+                                    <td>#{i.especialidad}</td>
+                                    <td>#{i.codigo}</td>
+                                    
+                                   
+                                    <th>
+                                        <center>
+                                        <h:commandButton class="btn btn-warning" value="Editar" actionListener="#{medicoBean.service.editarMedico(i.id_medico)}"/>
+
+                                        </center>
+                                    </th>
+                                    <th>
+                                        <h:commandButton class="btn btn-danger" value="Eliminar" actionListener="#{medicoBean.service.medicoDel(i.id_medico)}"></h:commandButton>
+
+                                    </th>
+
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </h:form>
+            </div>
+
+        </section>
+    </ui:define>
+</ui:composition>

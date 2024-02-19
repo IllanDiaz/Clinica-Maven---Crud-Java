@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <div class="container">
+            <h:form id="medicoForm" prependId="false">
+                <div class="form-floating my-3">
+                    
+                </div>
+                
+                <div class="form-floating my-3">
+                    <h:inputText styleClass="form-control" id="nombremedico" value="#{medicoBean.service.medico.nombremedico}" />
+                    <h:outputLabel for="nombremedico" value="Nombremedico" />
+                </div>
+
+                <div class="form-floating my-3">
+                    <h:inputText styleClass="form-control" id="especialidad" value="#{medicoBean.service.medico.especialidad}" />
+                    <h:outputLabel for="especialidad" value="Especialidad" />
+                </div>
+
+                <div class="form-floating my-3">
+                    <h:inputText styleClass="form-control" id="codigo" value="#{medicoBean.service.medico.codigo}" />
+                    <h:outputLabel for="codigo" value="Codigo del medico" />
+                </div>
+
+                <p class="text-center my-3">
+                    
+                    <h:commandButton styleClass="btn btn-success" action="medico_sel.xhtml" actionListener="#{medicoBean.service.medicoIns()}" 
+                     value="Insertar"></h:commandButton>
+                    <h:commandLink styleClass="btn btn-danger" action="medico_sel.xhtml" value="Regresar" />
+                    
+                    
+                </p>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

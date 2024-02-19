@@ -1,0 +1,41 @@
+<ui:composition template="/WEB-INF/template/layout_paciente.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:param name="titulo" value="Perfil de Paciente"/>
+    <ui:define name="content">
+        <section class="container">
+            <h1 class="section-title">Mis datos</h1>
+            <f:metadata>
+                <f:viewParam name="id_paciente" value="#{medicoBean.service.medico.id_medico}" />
+                <f:event type="preRenderView" listener="#{medicoBean.service.medicoGet(medicoBean.service.medico.id_medico)}"/>
+            </f:metadata>
+            <div class="container-form bg-white p-5 rounded-5 text-secondary shadow">
+                <h:form>
+                    <div class="col-12 col-md-6">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <p:inputText id="nombre" class="form-control" value="#{medicoBean.service.medicoGet(medicoBean.service.medico.id_medico).nombremedico}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="appaterno" class="form-label">Especialidad</label>
+                        <p:inputText id="appaterno" class="form-control" value="#{medicoBean.service.medicoGet(medicoBean.service.medico.id_medico).especialidad}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="apmaterno" class="form-label">Codigo</label>
+                        <p:inputText id="apmaterno" class="form-control" value="#{medicoBean.service.medicoGet(medicoBean.service.medico.id_medico).codigo}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="sexo" class="form-label">Contraseña</label>
+                        <p:inputText id="sexo" class="form-control" value="#{medicoBean.service.medicoGet(medicoBean.service.medico.id_medico).password}" disabled="true"></p:inputText>
+                    </div>
+                    <div class="col-12">
+                    <p:commandButton value="Editar" actionListener="#{pacienteBean.service.editarPaciente(pacienteBean.service.paciente.id_paciente)}"/>
+                </div>
+                </h:form>
+            </div>
+        </section>
+    </ui:define>
+    
+</ui:composition>

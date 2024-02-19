@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition template="/WEB-INF/template/layout_paciente.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <section class="container">
+            <h1 class="section-title">Historial</h1>
+
+            <div class="container-table mt-3">
+                <h:form>
+                    <table class="table table-dark table-striped" id="tablaHistorial">
+                        <thead>
+                            <tr>
+                                <th>ID Paciente</th>
+                                <th>Sintomas</th>
+                                <th>Diagnostico</th>
+                                <th>Tratamiento</th>
+                                <th>ID Medico</th>
+
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <ui:repeat value="#{historialBean.service.historialSel()}" var="i">
+                                <tr>
+                                    <td>#{i.paciente_id_paciente}</td>
+                                    <td>#{i.sintomas}</td>
+                                    <td>#{i.diagnostico}</td>
+                                    <td>#{i.tratamiento}</td>
+                                    <td>#{i.medico_id_medico}</td>
+
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </h:form>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

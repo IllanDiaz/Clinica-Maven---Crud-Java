@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/template/layout_medico.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:include src="WEB-INF/boots/coots.xhtml" />
+    
+    <ui:param name="title" value="Productos"/>
+    
+<ui:define name="content">
+    <h:body>
+        <div class="container">
+            <f:metadata>
+                <f:viewParam name="id_medico" value="#{medicoBean.service.medico.id_medico}" />
+                <f:event type="preRenderView" listener="#{medicoBean.service.medicoGet(medicoBean.service.medico.id_medico)}"/>
+            </f:metadata>
+            <div class="col-12 col-md-6">
+                Codigo colaborador: #{medicoBean.service.medicoGet(medicoBean.service.medico.id_medico).id_medico}
+            </div>
+            
+            <h1>Actualizar</h1>
+            
+            <h:form id="medicoForm" enctype="multipart/form-data" >
+
+                <div class="form-floating my-3">
+                    <h:inputText styleClass="form-control" id="nombremedico" 
+                                 value="${medicoBean.service.medico.nombremedico}"/>
+                    <h:outputLabel for="nombremedico" value="nombremedico" />
+                </div>
+
+                <div class="form-floating my-3">
+                    <h:inputText styleClass="form-control" id="especialidad" 
+                                 value="${medicoBean.service.medico.especialidad}"  />
+                    <h:outputLabel for="especialidad" value="especialidad" />
+                </div>
+
+                <div class="form-floating my-3">
+                    <h:inputText styleClass="form-control" id="codigo" 
+                                 value="${medicoBean.service.medico.codigo}" />
+                    <h:outputLabel for="codigo" value="codigo" />
+                </div>
+                
+                <p class="text-center">
+                    <h:commandButton type="submit" class="btn btn-warning" value="Update" actionListener="#{medicoBean.service.medicoUpd()}"/> 
+                    <h:commandLink type="submit" styleClass="btn btn-danger" action="medico_sel.xhtml" value="Volver" />
+
+
+                </p>
+                
+            </h:form>
+            
+        </div>
+    </h:body>
+
+</ui:define>
+</ui:composition>
